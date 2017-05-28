@@ -1,11 +1,16 @@
 {
-  "name": "node-js-sample",
-  "version": "0.2.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "heroku-docker-app",
+  "version": "0.0.1",
+  "description": "My Heroku Docker Node app.",
+	"readme": "readme.md",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/mattduffy/heroku-docker.git"
+	},
   "dependencies": {
     "express": "^4.0.0"
   },

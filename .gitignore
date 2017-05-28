@@ -4,6 +4,10 @@ tmp
 log
 mongodb/data/db/*
 redis/data/*
-webapp/npm_debug.log
+webapp/npm-debug.log
 webapp/node_modules
 **/*.env
+*.tar.gz
+*.tgz
+*.zip
+
