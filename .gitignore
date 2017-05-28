@@ -1,0 +1,9 @@
+.DS_Store
+**/*.swp
+tmp
+log
+mongodb/data/db/*
+redis/data/*
+webapp/npm_debug.log
+webapp/node_modules
+**/*.env

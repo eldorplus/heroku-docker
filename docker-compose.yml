@@ -1,0 +1,25 @@
+version: '3'
+services:
+  web:
+    build: webapp/
+    ports:
+      - "5000:5000"
+    env_file: webapp/variables.env
+    depends_on:
+      - redis 
+    volumes:
+      - ./webapp:/opt/webapp
+  mongodb:
+    image: percona/percona-server-mongodb
+    command: --storageEngine=rocksdb
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodb/data/db:/data/db
+  redis:
+    image: redis:alpine
+    ports: 
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data
+
