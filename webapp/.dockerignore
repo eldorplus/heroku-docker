@@ -1,5 +1,6 @@
 npm-debug.log
 node_modules
+.config
 variables.env
 .DS_Store
 **/*.swp
