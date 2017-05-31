@@ -10,6 +10,7 @@ services:
     volumes:
       - ./webapp:/opt/webapp
   mongodb:
+    #https://hub.docker.com/r/percona/percona-server-mongodb/
     image: percona/percona-server-mongodb
     command: --storageEngine=rocksdb
     ports:

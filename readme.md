@@ -1,4 +1,6 @@
-**My Heroku Docker Test**
+#Node Core App#
+
+##Docker Compose Orchestration For Multi-container Service## 
 
 Learning how to deploy a multi-container Docker app onto Heroku.
 
@@ -12,10 +14,11 @@ The whole thing is currently orchestrated by a docker-compose.yml file for local
 ```bash
 docker-compose up -d
 ```
+
 ```yaml
 version: '3'
 services:
-  web:
+	web:
 		build: webapp/
 		ports:
 			- "5000:5000"

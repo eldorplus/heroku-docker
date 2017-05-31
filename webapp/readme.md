@@ -19,16 +19,16 @@ To run this container on its own, without Docker Compose, do something like this
 
 
 ```bash
-docker stop nodie
+	docker stop nodie
 
-docker build --tag nodie .
+	docker build --tag nodie .
 
-docker run \
-	--env-file variables.env \
-	--name nodie \
-	--rm \
-	--volume $PWD:/opt/webapp \
-	-p 5000:5000 \
-	-d \
-	nodie
+	docker run \
+		--env-file variables.env \
+		--name nodie \
+		--rm \
+		--volume $PWD:/opt/webapp \
+		-p 5000:5000 \
+		-d \
+		nodie
 ```
