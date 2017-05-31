@@ -8,7 +8,9 @@ Heroku has designed this container to require that an environmental variable, PO
 * This container extends heroku/nodejs
 * This container runs as non-root user node (uid=999(node) gid=999(node) groups=999(node))
 * app root is mounted to /opt/webapp
-* app code is mounted into the named volume at /opt/webapp from local dir
+* app code is mounted into the named volume at /opt/webapp into local directory $PWD 
+* app is run with nodemon in container to reload app on code changes (even works from host mounted volume!)
+* app launcher can be switched (from nodemon) in Dockerfile  to use node foreman to more closely mimic Heroku, but haven't really gotten used to that yet.
 
 
 To run this container on its own, without Docker Compose, do something like this:

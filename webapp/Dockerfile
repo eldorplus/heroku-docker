@@ -23,4 +23,4 @@ ENV HOME /opt/webapp
 VOLUME ["/opt/webapp"]
 
 #CMD ["nf", "run"]
-CMD ["nodemon", "index.js"]
+CMD ["nodemon"]
