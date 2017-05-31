@@ -1,0 +1,48 @@
+{
+	"name": "Node Core App",
+	"description": "The core architectural components of a containerized, service-oriented webapp; built with Node.js, MongoDB, and Redis, to be deployed on Heroku.",
+	"keywords": [
+		"node.js",
+		"mongodb",
+		"redis",
+		"docker",
+		"docker-compose",
+		"heroku",
+		"app core"
+	],
+	"repository": "https://github.com/mattduffy/heroku-docker",
+	"success_url": "",
+	"scripts": {
+	},
+	"env": {
+
+	
+	},
+	"WEB_CONCURRENCY": {
+		"description": "The number of processes to run.",
+		"value": "1"
+	},
+	"formation": {
+		"web": {
+			"quantity": "1",
+			"size": "free"
+		}
+	},
+	"stack": "heroku-16",
+	"image": "heroku/nodejs",
+	"buildpacks": [
+		{
+			"url": "heroku/nodejs"
+		}
+	],
+	"addons": [
+		{
+			"plan": "heroku-redis:hobby-dev",
+			"as": "redis"
+		},
+		{
+			"plan": "mongolab:sandbox",
+			"as": "mongo"
+		}
+	]
+}
