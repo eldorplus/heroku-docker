@@ -8,19 +8,18 @@ services:
     depends_on:
       - redis 
     volumes:
-      - ./webapp:/opt/webapp
+      - $PWD/webapp:/opt/webapp
   mongodb:
-    #https://hub.docker.com/r/percona/percona-server-mongodb/
-    image: percona/percona-server-mongodb
-    command: --storageEngine=rocksdb
+    #https://hub.docker.com/r/library/mongo/
+    image: mongo
     ports:
       - "27017:27017"
     volumes:
-      - ./mongodb/data/db:/data/db
+      - $PWD/mongodb/data/db:/data/db
   redis:
     image: redis:alpine
     ports: 
       - "6379:6379"
     volumes:
-      - ./redis/data:/data
+      - $PWD/redis/data:/data
 
