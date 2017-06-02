@@ -1,13 +1,13 @@
-#Heroku / Docker Container App#
+# Heroku / Docker Container App #
 
-##Node.js App Instance##
+## Node.js App Instance ##
 
 This is me learning how to create an app to deploy on Heroku with containers.
 
 Heroku has designed this container to require that an environmental variable, PORT, is passed to the container at runtime.  This can be done either by specifying, on the command line, a variables file `--env_file variables.env` or by including individual variable assignement `-e "PORT=5000".
 
 
-* This container extends heroku/nodejs
+* This container extends [heroku/nodejs](https://hub.docker.com/r/heroku/nodejs/)
 * This container runs as non-root user node (uid=999(node) gid=999(node) groups=999(node))
 * app root is mounted to /opt/webapp
 * app code is mounted into the named volume at /opt/webapp into local directory $PWD 
