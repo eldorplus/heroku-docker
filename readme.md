@@ -11,7 +11,7 @@ This app has the following named containers:
 
 The whole thing is currently orchestrated by a docker-compose.yml file for local development.
 
-```bash
+```console
 docker-compose up -d
 ```
 

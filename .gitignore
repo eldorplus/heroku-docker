@@ -1,4 +1,5 @@
 .DS_Store
+**/.bash*
 **/*.swp
 tmp
 log
@@ -7,6 +8,7 @@ redis/data/*
 webapp/.config
 webapp/npm-debug.log
 webapp/node_modules
+webapp/.npm
 **/*.env
 *.tar.gz
 *.tgz

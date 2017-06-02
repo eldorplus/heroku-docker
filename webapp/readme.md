@@ -18,7 +18,7 @@ Heroku has designed this container to require that an environmental variable, PO
 To run this container on its own, without Docker Compose, do something like this:
 
 
-```bash
+```console
 	docker stop nodie
 
 	docker build --tag nodie .

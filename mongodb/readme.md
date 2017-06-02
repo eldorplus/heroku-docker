@@ -2,7 +2,7 @@
 
 ##MongoDB ##
 
-Configuration notes on running [Mongodb][https://hub.docker.com/r/library/mongo/].
+Configuration notes on running [MongoDB][https://hub.docker.com/r/library/mongo/].
 
 Heroku has designed this container to require that an environmental variable, PORT, is passed to the container at runtime.  This can be done either by specifying, on the command line, a variables file `--env_file variables.env` or by including individual variable assignement `-e "PORT=27017".
 
@@ -10,7 +10,7 @@ Heroku has designed this container to require that an environmental variable, PO
 To run this container on its own, without Docker Compose, do something like this:
 
 
-```bash
+```console
 	docker stop mongo 
 
 	docker build --tag mongo .

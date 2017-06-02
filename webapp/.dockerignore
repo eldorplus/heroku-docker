@@ -1,8 +1,10 @@
 npm-debug.log
 node_modules
+.npm
 .config
 variables.env
 .DS_Store
+.bash*
 **/*.swp
 *.tgz
 *.tar.gz
