@@ -18,12 +18,12 @@ services:
       - $PWD/redis/data:/data
 
   web:
-    container_name: node_core
     build: webapp/
-    env_file: webapp/variables.env
+    container_name: node_core
     depends_on:
       - redis 
       - mongodb
+    env_file: webapp/variables.env
     links:
       - mongodb:mongodb
       - redis
@@ -34,14 +34,14 @@ services:
 
   mongo-express:
     container_name: mongo-express
-    image: mongo-express
+    depends_on:
+      - redis
+      - mongodb
     environment:
       - ME_CONFIG_BASICAUTH_USERNAME=admin
       - ME_CONFIG_BASICAUTH_PASSWORD=pass
       - ME_CONFIG_MONGODB_SERVER=mongodb
-    depends_on:
-      - redis
-      - mongodb
+    image: mongo-express
     links:
       - mongodb:mongo
       - redis
