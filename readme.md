@@ -21,16 +21,16 @@ docker-compose up -d
 
 version: '3'
 services:
-  mongodb:
-		#https://hub.docker.com/r/library/mongo/
+	mongodb:
+  		#https://hub.docker.com/r/library/mongo/
 		container_name: mongodb
 		image: mongo
 		ports:
 			- "27017:27017"
 		volumes:
-		- $PWD/mongodb/data/db:/data/db
+			- $PWD/mongodb/data/db:/data/db
 
-  redis:
+	redis:
 		container_name: redis
 		image: redis:alpine
 		ports: 
