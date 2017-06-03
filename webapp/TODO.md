@@ -1,4 +1,4 @@
-# List of things to implement next.#
+# List of things to implement next #
 
 -  [ ] install express.js
 -  [ ] set up application routes
