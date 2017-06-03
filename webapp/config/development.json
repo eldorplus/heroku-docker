@@ -1,0 +1,11 @@
+{
+	"appName": process.env.APP_NAME,
+	"appversion": process.env.APP_VERSION,
+	"dbURL": "mongodb://mongodb:27017/node_core",
+	"sessionSecret": process.env.SESSION_SECRET,
+	"fb": {
+		"appId": "",
+		"appSecret": "",
+		"callbackURL": ""
+	}
+}
