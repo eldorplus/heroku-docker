@@ -10,10 +10,8 @@ RUN groupadd node && \
 
 RUN mkdir /opt/webapp && chmod o+w /opt/webapp
 
-WORKDIR /opt/webapp
-
 #RUN npm install -g foreman 
-RUN npm install -g nodemon
+RUN npm install -g nodemon foreman
 
 USER node
 
@@ -22,7 +20,8 @@ ENV HOME /opt/webapp
 #ADD . /opt/webapp
 VOLUME ["/opt/webapp"]
 
-RUN npm install
+WORKDIR /opt/webapp
+#RUN npm install
 
 #CMD ["nf", "run"]
 CMD ["nodemon"]

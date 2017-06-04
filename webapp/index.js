@@ -5,13 +5,19 @@ const app = express();
 const config = require('./config/config.js');
 const path = require('path');
 
+var engines = require('consolidate');
+
+app.engine('html', engines.handlebars);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
 	console.log(process.env);
-  response.send('Hello World! Hey girl, let\'s fingerbang!')
+  //response.send('Hello World! Hey girl, let\'s fingerbang!')
+	response.render('index', {message: "finger blasting our way through the galaxy."});
 })
 
 app.listen(app.get('port'), function() {
