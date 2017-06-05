@@ -1,8 +1,8 @@
 # List of things to implement next #
 
--  [ ] install express.js
+-  [X] install express.js
+-  [X] set up application views and template engine
 -  [ ] set up application routes
--  [ ] set up application views and template engine
 -  [ ] create app config
 -  [ ] get database connection work and create app specific db config settings
 -  [ ] create CRUD forms to manage user accounts
