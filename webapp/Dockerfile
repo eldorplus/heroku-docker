@@ -21,7 +21,7 @@ ENV HOME /opt/webapp
 VOLUME ["/opt/webapp"]
 
 WORKDIR /opt/webapp
-#RUN npm install
+RUN npm install
 
 #CMD ["nf", "run"]
 CMD ["nodemon"]

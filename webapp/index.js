@@ -14,11 +14,17 @@ app.set('views', __dirname + '/views');
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', function(request, response) {
+app.get('/', function(req, res, next) {
 	console.log(process.env);
-  //response.send('Hello World! Hey girl, let\'s fingerbang!')
-	response.render('index', {message: "finger blasting our way through the galaxy."});
+  //res.send('Hello World! Hey girl, let\'s fingerbang!')
+	res.render('index', {message: "finger blasting our way through the galaxy."});
 })
+
+app.use(function(req, res){
+	console.log(req.originalUrl);
+	var message = "Sorry, but the requested URL doesn't work: " + res.originalUrl;
+	res.status(404).render('404', {message: message});
+});
 
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
