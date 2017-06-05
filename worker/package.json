@@ -1,0 +1,24 @@
+{
+  "name": "worker",
+  "version": "0.0.1",
+  "description": "Simple queue worker app to be run in the background.",
+  "main": "worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattduffy/heroku-docker.git"
+  },
+  "keywords": [
+    "background",
+    "queue",
+    "worker"
+  ],
+  "author": "Matthew Duffy <mattduffy@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattduffy/heroku-docker/issues"
+  },
+  "homepage": "https://github.com/mattduffy/heroku-docker#readme"
+}
