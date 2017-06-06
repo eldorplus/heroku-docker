@@ -24,4 +24,5 @@ WORKDIR /opt/webapp
 RUN npm install
 
 #CMD ["nf", "run"]
+ENV DEBUG="node-core,express:*"
 CMD ["nodemon"]

@@ -19,7 +19,7 @@ services:
 
   web:
     build: webapp/
-    container_name: node_core
+    container_name: node-core
     depends_on:
       - redis 
       - mongodb
