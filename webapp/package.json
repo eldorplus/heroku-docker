@@ -2,19 +2,22 @@
   "name": "heroku-docker-app",
   "version": "0.0.1",
   "description": "My Heroku Docker Node app.",
-	"readme": "readme.md",
+  "readme": "readme.md",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/mattduffy/heroku-docker.git"
-	},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattduffy/heroku-docker.git"
+  },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "consolidate": "^0.14.x",
+    "debug": "^2.6.8",
     "express": "^4.0.0",
-		"consolidate": "^0.14.x",
-		"handlebars": "^4.0.x"
+    "handlebars": "^4.0.x",
+    "url": "^0.11.0"
   },
   "engines": {
     "node": "0.12.x"
