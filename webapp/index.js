@@ -2,6 +2,7 @@
 
 const debug = require('debug')('NC:index')
 	, config = require('./config/config.js')
+	, helmet = require('helmet')
 	, express = require('express')
 	, app = express()
 	, engines = require('consolidate')
@@ -9,7 +10,7 @@ const debug = require('debug')('NC:index')
 	, url = require('url')
 	;
 
-
+app.use(helmet());
 app.engine('html', engines.handlebars);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
@@ -41,14 +42,18 @@ const clientErrorHandler = (err, req, res, next)=>{
 	}
 };
 const errorHandler = (err, req, res, next)=>{
-	res.status(500);
-	res.render('error', {
-		status: 500,
-		message: "Internal server error.",
-		resource: req.originalUrl,
-		requestedOn: requestTime,
-		stack: err.stack,
-	});
+	if(res.headersSent){
+		return next(err);
+	} else {
+		res.status(500);
+		res.render('error', {
+			status: 500,
+			message: "Internal server error.",
+			resource: req.originalUrl,
+			requestedOn: requestTime,
+			stack: err.stack,
+		});
+	}
 };
 
 /*app.get('/', (req, res, next)=> {
@@ -68,8 +73,7 @@ app.use('/auth', require('./auth/routes.js')(config));
 app.use((req, res, next)=>{
 	// HTTP 404; Not Found type err handler
 	debug("default fallthrough 404 error middleware.");
-	//debug(err.stack);
-	let message = "Sorry, but the requested URL doesn't work: ";
+	let message = "Sorry, but the requested resource is not found. ";
 	res.status(404).render('error', {
 		title: "Error Page",
 		message: message, 
