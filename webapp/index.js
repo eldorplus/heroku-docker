@@ -22,28 +22,53 @@ const requestTime = (req, res, next)=>{
 	req.requestTime = Date.now();
 	next();
 };
-const errorHandler = (req, res, next)=>{
-	console.log("test this middleware errorHandler to see what it does.");
-	next();
+const logErrors = (err, req, res, next)=>{
+	debug(err.stack);
+	next(err);
+};
+const clientErrorHandler = (err, req, res, next)=>{
+	debug(err.stack);
+	if(req.xhr){
+		res.status(500).json({
+			status: 500,
+			message: "internal server error",
+			resource: req.originalUrl,
+			requestedOn: req.requestTime,
+			stack: err.stack
+			});
+	} else {
+		next(err);
+	}
+};
+const errorHandler = (err, req, res, next)=>{
+	res.status(500);
+	res.render('error', {
+		status: 500,
+		message: "Internal server error.",
+		resource: req.originalUrl,
+		requestedOn: requestTime,
+		stack: err.stack,
+	});
 };
 
-
-/*
-app.get('/', (req, res, next)=> {
-	debug("testing the debug handle");
+/*app.get('/', (req, res, next)=> {
 	res.render('index', {message: "blasting our way through the galaxy."});
-});
-*/
+});*/
 
 
 app.use(requestTime);
+
+app.use(logErrors);
+app.use(clientErrorHandler);
 app.use(errorHandler);
 
 app.use('/', require('./index/routes.js')(config));
 app.use('/auth', require('./auth/routes.js')(config));
 
 app.use((req, res, next)=>{
+	// HTTP 404; Not Found type err handler
 	debug("default fallthrough 404 error middleware.");
+	//debug(err.stack);
 	let message = "Sorry, but the requested URL doesn't work: ";
 	res.status(404).render('error', {
 		title: "Error Page",
@@ -52,7 +77,6 @@ app.use((req, res, next)=>{
 		requestedOn: req.requestTime
 		});
 });
-
 
 
 app.listen(app.get('port'), function() {
