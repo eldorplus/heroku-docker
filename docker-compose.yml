@@ -17,17 +17,6 @@ services:
     volumes:
       - $PWD/redis/data:/data
 
-  nginx:
-    build: nginx/
-    container_name: nginx-node-core
-    links:
-      - mongodb:mongodb
-      - redis:redis
-      - web:web
-    ports:
-      - "80:80"
-      - "443:443"
-
   web:
     build: webapp/
     container_name: node-core
@@ -37,7 +26,7 @@ services:
     env_file: webapp/variables.env
     links:
       - mongodb:mongodb
-      - redis
+      - redis:redis
     ports:
       - "5000:5000"
     volumes:
@@ -46,7 +35,6 @@ services:
   mongo-express:
     container_name: mongo-express
     depends_on:
-      - redis
       - mongodb
     environment:
       - ME_CONFIG_BASICAUTH_USERNAME=admin
@@ -55,7 +43,17 @@ services:
     image: mongo-express
     links:
       - mongodb:mongo
-      - redis
+      - redis:redis
     ports:
       - "8081:8081"
+
+  nginx:
+    build: nginx/
+    container_name: nginx-node-core
+    links:
+      - web:web
+      - mongo-express:mongo-express
+    ports:
+      - "80:80"
+      - "443:443"
 

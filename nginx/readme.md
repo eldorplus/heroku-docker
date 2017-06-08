@@ -4,8 +4,9 @@
 
 Configuration notes on running [Nginx](https://hub.docker.com/_/nginx/).
 
-Heroku has designed this container to require that an environmental variable, PORT, is passed to the container at runtime.  This can be done either by specifying, on the command line, a variables file `--env_file variables.env` or by including individual variable assignement `-e "PORT=27017".
+As configured, this container won't start as a standalone service because the proxy_pass directive requires the hostname of the node.js container.  The hostname for that container is set in the docker compose file, as web, but the nginx container does not know that ahead of time.  In the docker compose file, the nginx service needs to be started after (depends_on) the web service.
 
+To run a standalone nginx container, use the ```docker run nginx:alpine``` version.
 
 To run this container on its own, without Docker Compose, do something like this:
 
