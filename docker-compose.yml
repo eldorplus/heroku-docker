@@ -17,6 +17,17 @@ services:
     volumes:
       - $PWD/redis/data:/data
 
+  nginx:
+    build: nginx/
+    container_name: nginx-node-core
+    links:
+      - mongodb:mongodb
+      - redis:redis
+      - web:web
+    ports:
+      - "80:80"
+      - "443:443"
+
   web:
     build: webapp/
     container_name: node-core
