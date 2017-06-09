@@ -1,8 +1,9 @@
 # Big Things To Plan For #
 
 -  [X] Get nginx working as a reverse proxy on :80
+-  [X] Get nginx working as a reverse proxy on  :443 
+-  [ ] Get nginx to force redirect all :80 -> :443
 -  [ ] Let's Encrypt TLS/SSL support
--  [ ] Get nginx working to redirect :80 to :443 before proxy_pass
 -  [ ] Learn how to deploy app containers to Heroku.
 -  [ ] Learn how to deploy app containers to AWS.
 

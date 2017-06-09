@@ -1,6 +1,8 @@
 .DS_Store
 **/.bash*
 **/*.swp
+**/*cert.pem
+**/*key.pem
 tmp
 log
 mongodb/data/*
