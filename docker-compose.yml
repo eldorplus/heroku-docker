@@ -17,9 +17,9 @@ services:
     volumes:
       - $PWD/redis/data:/data
 
-  web:
+  node-core-app:
     build: webapp/
-    container_name: node-core
+    container_name: node-core-app
     depends_on:
       - redis 
       - mongodb
@@ -51,7 +51,7 @@ services:
     build: nginx/
     container_name: nginx-node-core
     links:
-      - web:web
+      - node-core-app:web
       - mongo-express:mongo-express
     ports:
       - "80:80"
