@@ -4,7 +4,7 @@ const router = require('express').Router()
 	, debug = require('debug')('NC:index-router')
 	;
 
-debug("loading the node-core index router.");
+debug("Loading the node-core index router.");
 module.exports = (config)=> {
 
 	router.get('/', (req, res, next)=>{

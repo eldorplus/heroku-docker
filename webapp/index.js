@@ -17,6 +17,7 @@ app.set('views', __dirname + '/views');
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
+//app.use('/.well-known', express.static(__dirname + '/.well-known'));
 
 // Application Middleware Functions go here
 const requestTime = (req, res, next)=>{
@@ -69,6 +70,7 @@ app.use(errorHandler);
 
 app.use('/', require('./index/routes.js')(config));
 app.use('/auth', require('./auth/routes.js')(config));
+app.use('/.well-known', require('./index/letsencrypt.js')(config));
 
 app.use((req, res, next)=>{
 	// HTTP 404; Not Found type err handler
