@@ -57,5 +57,5 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - $PWD/nginx/ssl-certs:/etc/nginx/ssl-certs
-
+      - $PWD/letsencrypt:/etc/letsencrypt
+      - $PWD/nginx/ssl-certs:/etc/nginx/ssl-certs:ro
