@@ -86,9 +86,9 @@ app.use((req, res, next)=>{
 
 
 app.listen(app.get('port'), function() {
-  console.log(config.appName +" is running at localhost:" + app.get('port'))
-	console.log("config: " + config.appVersion);
-	console.log("config: " + config.sessionSecret);
-
+  debug(config.appName +" is running at localhost:" + app.get('port'))
+	debug("config: " + config.appVersion);
+	debug("config: " + config.sessionSecret);
+	console.log(process.env);
 })
 

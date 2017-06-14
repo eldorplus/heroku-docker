@@ -16,6 +16,7 @@ RUN npm install -g nodemon foreman
 USER node
 
 ENV HOME /opt/webapp
+ENV DEBUG="NC:*,express:*"
 
 #ADD . /opt/webapp
 VOLUME ["/opt/webapp"]
@@ -24,5 +25,4 @@ WORKDIR /opt/webapp
 RUN npm install
 
 #CMD ["nf", "run"]
-ENV DEBUG="NC:*,express:*"
 CMD ["nodemon"]
