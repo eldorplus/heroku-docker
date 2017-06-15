@@ -9,13 +9,18 @@ module.exports = (config)=> {
 
 	router.get('/', (req, res, next)=>{
 		res.render('index/index.html', {
-			title: "Node Core App",
+			helpers: {},	// which custom helpers are available in this template
+			layout: "main",	// can specify handlebars layout to use here if want to
+			siteTitle: config.appName,
 			message: "blastering our way through the galaxy."
 		});
 	});
 	
 	router.get('/about', (req, res, next)=>{
-		res.render('index/about', {
+		res.render('index/about.html', {
+			helpers: {},	// which custom helpers are available in this template
+			layout: "main",	// can specify handlebars layout to use here if want to
+			siteTitle: config.appName,
 			title: "About Page Title",
 			message: "no messages to display",
 			body: {

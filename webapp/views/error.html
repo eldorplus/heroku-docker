@@ -1,39 +1,17 @@
-<!doctype html>
-<html class="no-js" lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-		<script type="application/ld+json">
-		{
-			"@content": "https://schema.org"
-		}
-		</script>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-  </head>
-  <body>
-    <div class="row" style="border: 1px solid green">
-      <div class="large-12 columns">
-        <h3>Error: {{message}}</h3>
-				<h4>Requested resource: {{resource}}</h4>
-				<h5>Requested on: {{requestedOn}}</h5>
-      </div>
-    </div>
+	<h2>{{yell "houston, we have a problem!" }}</h2>
+	<div class="row" style="border: 1px solid green">
+		<div class="large-12 columns">
+			<h3>Error: {{message}}</h3>
+			<h4>Requested resource: {{resource}}</h4>
+			<h5>Requested on: {{requestedOn}}</h5>
+		</div>
+	</div>
 
-    <div class="row">
-      <div class="large-8 medium-8 columns" style="border:1px solid blue">
-        <h5>Here&rsquo;s your basic grid:</h5>
-        <!-- Grid Example -->
-			</div>
-      <div class="large-4 medium-4 columns">
-      </div>
-    </div>
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
-  </body>
-</html>
+	<div class="row">
+		<div class="large-8 medium-8 columns" style="border:1px solid blue">
+			<h5>Here&rsquo;s your basic grid:</h5>
+			<!-- Grid Example -->
+		</div>
+		<div class="large-4 medium-4 columns">
+		</div>
+	</div>
