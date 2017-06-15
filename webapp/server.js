@@ -30,6 +30,7 @@ const requestTime = (req, res, next)=>{
 	next();
 };
 const logErrors = (err, req, res, next)=>{
+	debub("logErrors middleware called.");
 	debug(err.stack);
 	next(err);
 };

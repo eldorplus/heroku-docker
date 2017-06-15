@@ -25,4 +25,4 @@ WORKDIR /opt/webapp
 RUN npm install
 
 #CMD ["nf", "run"]
-CMD ["nodemon"]
+CMD ["nodemon", "server.js"]
