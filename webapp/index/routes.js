@@ -8,7 +8,7 @@ debug("Loading the node-core index router.");
 module.exports = (config)=> {
 
 	router.get('/', (req, res, next)=>{
-		res.render('index/index', {
+		res.render('index/index.html', {
 			title: "Node Core App",
 			message: "blastering our way through the galaxy."
 		});

@@ -6,13 +6,16 @@ const debug = require('debug')('NC:index')
 	, express = require('express')
 	, app = express()
 	, engines = require('consolidate')
+	, exphbs = require('express-handlebars')
 	, path = require('path')
 	, url = require('url')
 	;
 
 app.use(helmet());
-app.engine('html', engines.handlebars);
-app.set('view engine', 'html');
+//app.engine('html', engines.handlebars);
+//app.set('view engine', 'html');
+app.engine('html', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 app.set('views', __dirname + '/views');
 
 app.set('port', (process.env.PORT || 5000))
