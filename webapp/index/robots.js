@@ -32,9 +32,9 @@ module.exports = (config)=> {
 			, siteName = req.hostname
 			;
 
-		return `
-# go away (at least for now)
-Sitemap: ${protocol}://${siteName}/sitemap.xml
+		return `Sitemap: ${protocol}://${siteName}/sitemap.xml
+User-agent: Google
+Disallow: 
 User-agent: *
 Disallow: /
 `;

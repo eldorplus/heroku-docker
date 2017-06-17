@@ -72,7 +72,7 @@ app.use(clientErrorHandler);
 app.use(errorHandler);
 
 app.use('/', require('./index/routes.js')(config));
-app.use('/auth', require('./auth/routes.js')(config));
+app.use('/auth', require('./accounts/routes.js')(config));
 app.use('/robots.txt', require('./index/robots.js')(config));
 app.use('/sitemap.xml', require('./index/sitemap-xml.js')(app, config));
 app.use('/.well-known', require('./index/letsencrypt.js')(config));
