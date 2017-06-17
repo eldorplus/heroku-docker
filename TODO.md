@@ -2,8 +2,10 @@
 
 -  [X] Get nginx working as a reverse proxy on :80
 -  [X] Get nginx working as a reverse proxy on  :443 
--  [ ] Get nginx to force redirect all :80 -> :443
--  [ ] Let's Encrypt TLS/SSL support
+-  [X] Get nginx to force redirect all :80 -> :443
+-  [X] Let's Encrypt TLS/SSL support
+-  [X] Register domain name for testing purposes
+-  [ ] Learn how to deploy app containers on Docker Cloud
 -  [ ] Learn how to deploy app containers to Heroku.
 -  [ ] Learn how to deploy app containers to AWS.
 

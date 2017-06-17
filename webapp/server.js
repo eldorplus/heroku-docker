@@ -35,7 +35,6 @@ const logErrors = (err, req, res, next)=>{
 	next(err);
 };
 const clientErrorHandler = (err, req, res, next)=>{
-	//debug(err.stack);
 	debug('clientErrorHandler middleware');
 	if(req.xhr){
 		res.status(500).json({
@@ -74,6 +73,7 @@ app.use(errorHandler);
 app.use('/', require('./index/routes.js')(config));
 app.use('/auth', require('./auth/routes.js')(config));
 app.use('/.well-known', require('./index/letsencrypt.js')(config));
+app.use('/robots.txt', require('./index/robots.js')(config));
 
 app.use((req, res, next)=>{
 	// HTTP 404; Not Found type err handler
