@@ -1,9 +1,10 @@
 <div class="top-bar">
-  <div class="top-bar-left">
+  <div class="container top-bar-left">
 		<ul class="dropdown menu" data-dropdown-menu>
 			<li class="menu-text">{{ siteTitle }}</li>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
 			<li><a href="/features">Features</a>
-
 				<ul class="menu vertical">
 					<li><a href="#">One</a></li>
 					<li><a href="#">Two</a></li>
@@ -11,14 +12,13 @@
 				</ul>
 			</li>
 
-			<li><a href="/about">About</a></li>
-			<li><a href="/authenticate">Login/Signup</a></li>
+			<li><input type="search" placeholder="Search"></li>
+			<li><button type="button" class="button">Search</button></li>
 		</ul>
 	</div>
 	<div class="top-bar-right">
 		<ul class="menu">
-			<li><input type="search" placeholder="Search"></li>
-			<li><button type="button" class="button">Search</button></li>
+			<li><a href="/authenticate">Login/Signup</a></li>
 		</ul>
 	</div>
 </div>

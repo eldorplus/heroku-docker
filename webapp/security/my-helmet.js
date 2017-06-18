@@ -28,6 +28,16 @@ module.exports = (app)=>{
 		}
 		res.status(204).end();
 	});
+	app.post('/report-hpkp-violations', (req, res, next)=>{
+		if (req.body){
+			debug(`HPKP Violation: ${req.body}`);
+		} else {
+			debug("HPKP Violation: No data received.");
+		}
+		res.status(204).end();
+	});
+
+	// Use https://report-uri.io/ for reporting and tracking header violations.
 	app.use(helmet.contentSecurityPolicy({
 		directives: {
 		defaultSrc: ["'self'"],
@@ -39,25 +49,28 @@ module.exports = (app)=>{
 			return `nonce-${res.locals.nonce}`;	
 		}],
 		//reportUri: '/report-csp-violations'
-		reportUri: 'https://report-uri.io/account/activate/37504723bcd0dcf437cf8071032028f9'
+		reportUri: 'https://mattduffy.report-uri.io/r/default/csp/enforce'
 		}
 }));
+
+	// Sets Expect-CT: max-age=7776000
+	let ninetyDaysInSeconds = 7776000;
 	app.use(expectCt({
 		enforce: true,
-		maxAge: 365,
-		reportUri: 'https://report-uri.io/account/activate/37504723bcd0dcf437cf8071032028f9'
+		maxAge: ninetyDaysInSeconds ,
+		reportUri: 'https://mattduffy.report-uri.io/r/default/ct/enforce'
 	}));
+
 	// Sets "X-DNS-Prefetch-Control: off".
-	app.use(helmet.dnsPrefetchControl());
+	app.use(helmet.dnsPrefetchControl({allow: false}));
 
 	// Sets "X-Frame-Options: SAMEORIGIN".
 	app.use(helmet.frameguard({action: "sameorigin"}));
 
 	// Hides "X-Powered-By header
-	app.use(helmet.hidePoweredBy({setTo: "Boners and Strict Muscle Ups"}));
+	app.use(helmet.hidePoweredBy({setTo: "Boners and Strict Handstand Push-ups"}));
 
-	// Sets the Public-Key-Pins headers
-	let ninetyDaysInSeconds = 7776000;
+	// Sets the Public-Key-Pins header.
 	app.use(helmet.hpkp({
 		maxAge: ninetyDaysInSeconds,
 		sha256s: [
@@ -66,8 +79,37 @@ module.exports = (app)=>{
 			'ZnvuvExX4YHAbfhiIlF3Susm1LJoQKR643yt8RU8p5U='
 		],
 		includeSubdomains: true,
-		reportUri: 'ZnvuvExX4YHAbfhiIlF3Susm1LJoQKR643yt8RU8p5U='
+		// reportUri: '/report-hpkp-violations'
+		reportUri: 'https://mattduffy.report-uri.io/r/default/hpkp/enforce'
 	}));
 
+	// Sets the Strict-Transport-Security header.
+	// Google's HSTS Preload https://hstspreload.org
+	let eightteenWeeksInSeconds = 10886400;
+	app.use(helmet.hsts({
+		maxAge: eightteenWeeksInSeconds,
+		includeSubdomains: true,
+		force: true,
+		preload: true
+	}));
+
+	// Sets "X-Download-Options: noopen".
+	app.use(helmet.ieNoOpen({allow: false}));
+
+	// Sets headers for Cache-Control, Surrogate-Control, Pragma, and Expires.
+	// Enabled during development, disabled in production
+	if ('development' == process.env.NODE_ENV) {
+		app.use(helmet.noCache());
+	}
+
+	// Sets "X-Content-Type-Options: nosniff".
+	app.use(helmet.noSniff());
+
+	// Sets "Referrer-Policy: no-referrer".
+	app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+
+	// Sets "X-XSS-Protection: 1; mode=block".
+	app.use(helmet.xssFilter());
+	
 return app;
 };
