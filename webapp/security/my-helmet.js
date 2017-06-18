@@ -56,6 +56,18 @@ module.exports = (app)=>{
 	// Hides "X-Powered-By header
 	app.use(helmet.hidePoweredBy({setTo: "Boners and Strict Muscle Ups"}));
 
-	
+	// Sets the Public-Key-Pins headers
+	let ninetyDaysInSeconds = 7776000;
+	app.use(helmet.hpkp({
+		maxAge: ninetyDaysInSeconds,
+		sha256s: [
+			'vwJXXkJJM2Qr8lcbdtOIG7vPM+SjefN3Ff6dkOp308s=',
+			'/SrK/hjNEsXFDv9gjLX9LhGD41N9gsjwst3fnqeh3Eg=',
+			'ZnvuvExX4YHAbfhiIlF3Susm1LJoQKR643yt8RU8p5U='
+		],
+		includeSubdomains: true,
+		reportUri: 'ZnvuvExX4YHAbfhiIlF3Susm1LJoQKR643yt8RU8p5U='
+	}));
+
 return app;
 };
