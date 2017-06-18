@@ -2,18 +2,21 @@
 
 const debug = require('debug')('NC:index')
 	, config = require('./config/config.js')
-	, helmet = require('helmet')
-	, moment = require('moment')
+	//, helmet = require('helmet')
 	, express = require('express')
 	, app = express()
+	, myHelmet = require('./security/my-helmet.js')(app)
+	, bodyParser = require('body-parser')
 	, engines = require('consolidate')
+	, moment = require('moment')
 	, exphbs = require('express-handlebars')
 	, path = require('path')
 	, url = require('url')
 	, helpers = require('./views/helpers/node-core-helpers.js');
 	;
 
-app.use(helmet());
+//app.use(helmet());
+app.use(bodyParser());
 app.engine('html', exphbs({
 	helpers: helpers,
 	defaultLayout: "main", 
