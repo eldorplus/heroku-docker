@@ -106,7 +106,7 @@ module.exports = (app)=>{
 	app.use(helmet.noSniff());
 
 	// Sets "Referrer-Policy: no-referrer".
-	app.use(helmet.referrerPolicy({ policy: 'same-origin' }));
+	app.use(helmet.referrerPolicy({ policy: 'origin' }));
 
 	// Sets "X-XSS-Protection: 1; mode=block".
 	app.use(helmet.xssFilter());

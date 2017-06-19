@@ -11,6 +11,7 @@ module.exports = (config)=> {
 		res.render('index/index.html', {
 			helpers: {},	// which custom helpers are available in this template
 			layout: "main",	// can specify handlebars layout to use here if want to
+			pageTitle: config.appName,
 			siteTitle: config.appName,
 			message: "blastering our way through the galaxy."
 		});

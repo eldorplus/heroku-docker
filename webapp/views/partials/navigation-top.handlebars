@@ -1,14 +1,23 @@
-<header>
-	<section>
-		<nav>
-			<img src="/img/logo-default.png" alt="default sized logo" width="200" height="100">
-			<ul>
-				<li>Home</li>
-				<li>About</li>
-				<li>Section 1</li>
-				<li>Section 2</li>
-				<li>Login/Signup</li>
+<nav aria-label="Main site links:" role="navigation">
+	<div class="top-bar stacked-for-medium">
+		<div class="container top-bar-left">
+			<ul class="dropdown menu" data-dropdown-menu>
+				<li><a href="/">Home</a></li>
+				<li><a href="/about">About</a></li>
+				<li><a href="/features">Features</a>
+					<ul class="menu vertical">
+						<li><a href="#">One</a></li>
+						<li><a href="#">Two</a></li>
+						<li><a href="#">Three</a></li>
+					</ul>
+				</li>
 			</ul>
-		</nav>
-	</section>
-</header>
+		</div>
+		<div class="top-bar-right">
+			<ul class="menu">
+				<li><input type="search" placeholder="Search"></li>
+				<li><button type="button" class="button">Search</button></li> 
+			</ul>
+		</div>
+	</div>
+</nav>
