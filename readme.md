@@ -5,10 +5,11 @@
 Learning how to deploy a multi-container Docker app onto Heroku.
 
 This app has the following named containers:
-- webapp, a node.js frontend app
-- [redis](https://hub.docker.com/_/redis/), a local data structure server
-- [mongo](https://hub.docker.com/_/mongo/), a persistent backing store (percona server version)
+- [nginx-node-core](https://hub.docker.com/_/nginx/), the reverse proxy server
+- node-core-app, the Node.js backend app
 - [mongo-express](https://hub.docker.com/_/mongo-express/), lightweight web frontend to mongodb
+- [mongodb](https://hub.docker.com/_/mongo/), a persistent backing store (percona server version)
+- [redis](https://hub.docker.com/_/redis/), a local data structure server
 
 The whole thing is currently orchestrated by a docker-compose.yml file for local development.
 
