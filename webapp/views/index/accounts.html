@@ -1,0 +1,63 @@
+    <div class="row">
+      <div class="large-12 columns">
+        <h1>{{greetings}}</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="callout">
+          <h3>{{body.h1_1}}</h3>
+					<p>{{body.p1}}</p>
+          <div class="row">
+            <div class="large-4 medium-4 medium-push-2 columns">
+							<h4>Login</h4>
+              <form name="login-form" id="login-form" action="/accounts/authenticate" method="POST">
+								<fieldset>
+									<label for="username">Username: 
+										<input type="text" name="username" id="username" value="{{ username }}">
+									</label>
+									<label for="password">Password: 
+										<input type="password" name="password" id="password" value="">
+									</label>
+									<input type="hidden" name="nonce" id="nonce" value="{{ locals.nonce }}">
+									<input type="submit" value="Submit">
+									<input type="reset" value="Reset">
+								</fieldset>
+							</form>
+            </div>
+            <div class="large-4 medium-4 medium-pull-2 columns">
+
+						</div>
+            <div class="large-4 medium-4 medium-pull-2 columns">
+							<h4>Create An Account</h4>
+              <form name="signup-form" id="signup-form" action="/accounts/signup" method="POST">
+								<fieldset>
+									<label for="username">Username: 
+										<input type="text" name="username" id="username" value="{{ username }}">
+									</label>
+									<label for="password">Password: 
+										<input type="password" name="password" id="password" value="">
+									</label>
+									<input type="hidden" name="nonce" id="nonce" value="{{ locals.nonce }}">
+									<input type="submit" value="Submit">
+									<input type="reset" value="Reset">
+								</fieldset>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-8 medium-8 columns">
+        <h5>Here&rsquo;s your basic grid:</h5>
+        <!-- Grid Example -->
+
+      </div>
+
+      <div class="large-4 medium-4 columns">
+        <h5>Try one of these buttons:</h5>
+      </div>
+    </div>
+

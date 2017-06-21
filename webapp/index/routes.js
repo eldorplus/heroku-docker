@@ -17,6 +17,17 @@ module.exports = (config)=> {
 		});
 	});
 	
+	router.get('/accounts', (req, res, next)=>{
+		res.render('index/accounts.html', {
+			helpers: {},
+			layout: "main",
+			pageTitle: "Login or Create an Account",
+			siteTitle: config.appName,
+			message: {},
+			locals: res.locals
+		});
+	});
+
 	router.get('/about', (req, res, next)=>{
 		res.render('index/about.html', {
 			helpers: {},	// which custom helpers are available in this template
