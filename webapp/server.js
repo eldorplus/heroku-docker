@@ -17,7 +17,7 @@ const debug = require('debug')('NC:index')
 	, helpers = require('./views/helpers/node-core-helpers.js')
 	
 
-app.set('trust proxy', true)
+app.set('trust proxy', 1)
 app.use(session({
 	host: config.r.host,
 	port: config.r.port
@@ -26,6 +26,20 @@ app.use(session({
 	logErrors: (err)=>{
 		const d = require('debug')('NC:RedisStore')
 		d(`(${process.env.NODE_ENV}) ${err}`)
+	},
+	cookie: {
+		path: "/",
+		httpOnly: false,
+		secure: "auto",
+		domain: null,
+		expires: null,
+		maxAge: null,
+		sameSite: 'strict',
+		name: config.sessionName,
+		proxy: true,
+		resave: false,
+		saveUninitialized: true,
+		unset: "keep"
 	}
 	}))
 app.use(bodyParser())

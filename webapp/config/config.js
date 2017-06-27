@@ -5,6 +5,7 @@ module.exports = {
 	"appVersion": process.env.APP_VERSION,
 	"appPort": process.env.PORT,
 	"dbURL": "mongodb://mongodb:27017/node_core",
+	"seesionName": process.env.SESSION_NAME,
 	"r": {
 		"host": process.env.REDIS_HOST,
 		"port": process.env.REDIS_PORT,
