@@ -1,10 +1,10 @@
-'use strict';
+'use strict'
 
 const router = require('express').Router()
 	, debug = require('debug')('NC:index-router')
-	;
+	
 
-debug("Loading the node-core index router.");
+debug("Loading the node-core index router.")
 module.exports = (config)=> {
 
 	router.get('/', (req, res, next)=>{
@@ -14,10 +14,12 @@ module.exports = (config)=> {
 			pageTitle: config.appName,
 			siteTitle: config.appName,
 			message: "blastering our way through the galaxy."
-		});
-	});
+		})
+	})
 	
 	router.get('/accounts', (req, res, next)=>{
+		let sess = req.session
+		console.log(`session views: ${sess}`)
 		res.render('index/accounts.html', {
 			helpers: {},
 			layout: "main",
@@ -25,8 +27,8 @@ module.exports = (config)=> {
 			siteTitle: config.appName,
 			message: {},
 			locals: res.locals
-		});
-	});
+		})
+	})
 
 	router.get('/about', (req, res, next)=>{
 		res.render('index/about.html', {
@@ -43,8 +45,8 @@ module.exports = (config)=> {
 				h3_2: "Cold Brew Coffee",
 				p3: "<p>For those who are serious about avoiding diluted coffee, cold brew might be the best choice. Beware, though. This takes longer to prepare, as it doesn't use heat, but rather time, to extract all of the goodness that your coffee grounds have to offer.</p><p>Here's how it works: Medium coffee grounds are left to seep in room-temperature water for 12 hours or more. From there, the liquid is poured through a filter to remove the grounds, and then ice is added. The grounds are never exposed to heat, and the end result is thicker coffee that has double the amount of caffeine. Pro tip: Add some chocolate syrup to bring out the naturally sweet flavor and thick consistency that this method produces. You'll basically turn your regular morning brew into a tasty dessert that fuels your body with energy.</p>"
 			}
-		});
-	});
+		})
+	})
 	
-	return router;
-};
+	return router
+}

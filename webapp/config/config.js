@@ -9,7 +9,7 @@ module.exports = {
 	"r": {
 		"host": process.env.REDIS_HOST,
 		"port": process.env.REDIS_PORT,
-		"prefix": process.env.REDIS_PREFIX,,
+		"prefix": process.env.REDIS_PREFIX,
 		"sessionSecret": process.env.REDIS_SESSION_SECRET
 	},
 	"m": {

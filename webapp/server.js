@@ -19,30 +19,32 @@ const debug = require('debug')('NC:index')
 
 app.set('trust proxy', 1)
 app.use(session({
-	host: config.r.host,
-	port: config.r.port
 	secret: config.r.sessionSecret,
-	store: new RedisStore,
-	logErrors: (err)=>{
-		const d = require('debug')('NC:RedisStore')
-		d(`(${process.env.NODE_ENV}) ${err}`)
-	},
+	store: new RedisStore({
+		host: config.r.host,
+		port: config.r.port,
+	}),
+	resave: true,
+	saveUninitialized: true,
+	proxy: true,
+	name: config.sessionName,
+	unset: "keep",
 	cookie: {
 		path: "/",
 		httpOnly: false,
 		secure: "auto",
 		domain: null,
 		expires: null,
-		maxAge: null,
-		sameSite: 'strict',
-		name: config.sessionName,
-		proxy: true,
-		resave: false,
-		saveUninitialized: true,
-		unset: "keep"
-	}
+		maxAge: 60000,
+		sameSite: 'strict'
+	},
+	logErrors: (err)=>{
+		const d = require('debug')('NC:RedisStore')
+		d(`(${process.env.NODE_ENV}) ${err}`)
+	},
 	}))
-app.use(bodyParser())
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
 app.engine('html', exphbs({
 	helpers: helpers,
 	defaultLayout: "main", 
@@ -125,7 +127,7 @@ app.use((req, res, next)=>{
 app.listen(app.get('port'), function() {
   debug(config.appName +" is running at localhost:" + app.get('port'))
 	debug("config appVersion: " + config.appVersion)
-	debug("config sessionSecret: " + config.sessionSecret)
+	debug("config sessionSecret: " + config.r.sessionSecret)
 	console.log(process.env)
 })
 
