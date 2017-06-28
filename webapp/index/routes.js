@@ -18,14 +18,21 @@ module.exports = (config)=> {
 	})
 	
 	router.get('/accounts', (req, res, next)=>{
+		let util = require('util')
 		let sess = req.session
-		console.log(`session views: ${sess}`)
+		if (sess.views) {
+			sess.views++
+			console.log("session views: ", util.inspect(sess.views))
+		} else {
+			sess.views = 1
+		}
 		res.render('index/accounts.html', {
 			helpers: {},
 			layout: "main",
 			pageTitle: "Login or Create an Account",
 			siteTitle: config.appName,
 			message: {},
+			views: sess.views,
 			locals: res.locals
 		})
 	})
