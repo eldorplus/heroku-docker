@@ -3,6 +3,8 @@ node_modules
 .npm
 .config
 variables.env
+.dbshell
+.mongorc.js
 .DS_Store
 .bash*
 **/*.swp

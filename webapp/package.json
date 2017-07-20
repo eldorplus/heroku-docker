@@ -6,13 +6,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-		"test": "node_modules/standard/bin/cmd.js"
+    "test": "node_modules/standard/bin/cmd.js"
   },
-	"standard": {
-		"ignore": [
-			"public/js/"
-		]
-	},
+  "standard": {
+    "ignore": [
+      "public/js/"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/mattduffy/heroku-docker.git"
@@ -28,6 +28,7 @@
     "express-session": "^1.15.3",
     "helmet": "^3.6.1",
     "moment": "^2.18.1",
+    "mongoose": "^4.11.3",
     "url": "^0.11.0",
     "uuid": "^3.1.0"
   },

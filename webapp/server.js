@@ -14,6 +14,7 @@ const path = require('path')
 const moment = require('moment')
 const exphbs = require('express-handlebars')
 const helpers = require('./views/helpers/node-core-helpers.js')
+const db = require('./db/index.js')(config)
 
 require('./security/my-helmet.js')(app)
 
@@ -129,5 +130,5 @@ app.listen(app.get('port'), () => {
   debug(config.appName + ' is running at localhost:' + app.get('port'))
   debug('config appVersion: ' + config.appVersion)
   debug('config sessionSecret: ' + config.r.sessionSecret)
-  console.log(process.env)
+  console.info(process.env)
 })

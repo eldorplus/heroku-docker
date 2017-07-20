@@ -16,3 +16,5 @@ webapp/.npm
 *.tgz
 *.zip
 letsencrypt/*
+**/.dbshell
+**/.mongorc.js
