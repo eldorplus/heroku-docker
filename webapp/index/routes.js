@@ -4,7 +4,10 @@ const router = require('express').Router()
 const debug = require('debug')('NC:index-router')
 
 debug('Loading the node-core index router.')
-module.exports = (config) => {
+// module.exports = (config) => {
+module.exports = (args) => {
+  const db = args.db
+  const config = args.config
   router.get('/', (req, res, next) => {
     res.render('index/index.html', {
       helpers: {},  // which custom helpers are available in this template

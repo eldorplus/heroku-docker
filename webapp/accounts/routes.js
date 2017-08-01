@@ -5,6 +5,9 @@ const router = require('express').Router()
 const debug = require('debug')('NC:auth-router')
 
 debug('loading the node-core authentication router.')
-module.exports = (config) => {
+module.exports = (args) => {
+  const config = args.config
+  const db = args.db
+
   return router
 }

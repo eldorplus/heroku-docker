@@ -8,6 +8,7 @@ module.exports = (c) => {
   // const uri = `mongodb://${c.m.username}:${c.m.password}@${c.m.host}:${c.m.port}/${c.m.db}`
   const uri = `mongodb://${c.m.host}:${c.m.port}/${c.m.db}`
   const opts = {
+    config: { autoIndex: c.m.autoIndex },
     useMongoClient: 'true'
   }
   debug(`mongodb connection string: ${uri}`)

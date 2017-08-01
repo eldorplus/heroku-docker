@@ -17,7 +17,8 @@ module.exports = {
     'password': process.env.MONGO_PASSWORD || null,
     'host': process.env.MONGO_HOST,
     'port': process.env.MONGO_PORT,
-    'db': process.env.MONGO_DB
+    'db': process.env.MONGO_DB,
+    'autoIndex': process.env.MONGO_AUTOINDEX || false
   },
   'fb': {
     'appId': false,

@@ -3,7 +3,9 @@ const router = require('express').Router()
 const debug = require('debug')('NC:letsencrypt-router')
 
 debug('Loading the letsencrypt acme-challenge router.')
-module.exports = (config) => {
+module.exports = (args) => {
+  // const config = args.config
+  // const db = args.db
   router.get('/acme-challenge/:authorizer', (req, res) => {
     res.set('Content-Type', 'text/plain')
       .send('Hello Cerbot.  I have been expecting you...') /* default test acme-challenge response */

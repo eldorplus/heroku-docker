@@ -4,7 +4,10 @@ const debug = require('debug')('NC:sitemap.xml-router')
 const moment = require('moment')
 
 debug('Loading the sitemap.xml router.')
-module.exports = (app, config) => {
+module.exports = (args) => {
+  // const app = args.app
+  // const config = args.config
+  // const db = args.db
   router.get('/', (req, res) => {
     res.set('Content-Type', 'text/xml')
       .send(sitemapXml(req, router))

@@ -102,15 +102,15 @@ const errorHandler = (err, req, res, next) => {
 
 app.use(requestTime)
 app.use(logErrors)
+
+app.use('/', require('./index/routes.js')({config, db}))
+app.use('/auth', require('./accounts/routes.js')({config, db}))
+app.use('/robots.txt', require('./index/robots.js')(config, db))
+app.use('/sitemap.xml', require('./index/sitemap-xml.js')({app, config, db}))
+app.use('/.well-known', require('./index/letsencrypt.js')({config, db}))
+
 app.use(clientErrorHandler)
 app.use(errorHandler)
-
-app.use('/', require('./index/routes.js')(config))
-app.use('/auth', require('./accounts/routes.js')(config))
-app.use('/robots.txt', require('./index/robots.js')(config))
-app.use('/sitemap.xml', require('./index/sitemap-xml.js')(app, config))
-app.use('/.well-known', require('./index/letsencrypt.js')(config))
-
 app.use((req, res, next) => {
   // HTTP 404; Not Found type err handler
   debug('Default fall-through route handler; 404 error middleware.')
