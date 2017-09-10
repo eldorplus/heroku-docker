@@ -5,6 +5,7 @@ node_modules
 *variables.env
 .DS_Store
 .bash*
+**/*.swo
 **/*.swp
 *.tgz
 *.tar.gz

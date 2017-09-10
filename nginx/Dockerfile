@@ -1,5 +1,5 @@
 FROM nginx:alpine
-RUN apk add --no-cache bash git wget certbot
+RUN apk add --no-cache bash git wget certbot vim
 
 COPY config/nginx.conf /etc/nginx/nginx.conf
 

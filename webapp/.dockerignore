@@ -8,6 +8,7 @@ variables.env
 .DS_Store
 .bash*
 **/*.swp
+**/*.swo
 *.tgz
 *.tar.gz
 *.zip
