@@ -1,8 +1,9 @@
 FROM nginx:alpine
 
-RUN echo "http://dl-3.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repository \
-    echo "http://dl-3.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repository \
-    echo "http://dl-3.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repository
+#RUN alias cl="clear && ls -la" && alias ..="cd ../ && cl" \
+#    echo "http://dl-3.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repository \
+#    echo "http://dl-3.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repository \
+#    echo "http://dl-3.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repository
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache bash git wget vim certbot
